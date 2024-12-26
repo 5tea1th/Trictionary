@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:trictionary/screens/questions.dart';
-import '../constants.dart';
+import 'package:trictionary/screens/questions.dart';import '../constants.dart';
 import '../usedWidgets/roundedButton.dart';
 
-class LoginScreen extends StatefulWidget{
+class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
   const LoginScreen({super.key});
 
@@ -25,30 +24,33 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: SafeArea( // Added SafeArea for better notch/status bar handling
+        body: SafeArea(
           child: Center(
-            child: SingleChildScrollView( // Added SingleChildScrollView to prevent overflow
+            child: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.1), // Adjust spacing here
-                    Text(
-                      "TRICTIONARY",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 65.0,
-                        fontFamily: 'Anton',
-                        letterSpacing: 4.0,
+                  children: [SizedBox(height: MediaQuery.of(context).size.height * 0.05), // Adjusted spacing
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "TRICTIONARY",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 65.0,
+                          fontFamily: 'Anton',
+                          letterSpacing: 4.0,
+                        ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.1), // Adjust spacing here
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.05), // Adjusted spacing
                     TextField(
                       textAlign: TextAlign.center,
-                      keyboardType: TextInputType.emailAddress,decoration: kInputDecoration.copyWith(hintText: 'Email'),
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: kInputDecoration.copyWith(hintText: 'Email'),
                     ),
                     TextField(
                       textAlign: TextAlign.center,
@@ -62,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       buttonText: 'Login',
                     ),
-                    SizedBox(height: 20), // Adjust spacing here
+                    SizedBox(height: 20),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

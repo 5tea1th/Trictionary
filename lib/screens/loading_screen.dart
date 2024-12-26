@@ -23,14 +23,17 @@ class _LoadingScreenState extends State<LoadingScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
                     "TRICTIONARY",
                     style: TextStyle(
-                      fontSize: 65.0,
+                      fontSize: 55.0,
                       fontFamily: 'Anton',
                       letterSpacing: 4.0,
                     ),
                   ).animate().scale().tint(color: Colors.blue[800]),
+                ),
               ],
             ),
             const SizedBox(

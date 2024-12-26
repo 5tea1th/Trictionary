@@ -26,7 +26,7 @@ class _PreferenceBoxState extends State<PreferenceBox> {
             decoration: BoxDecoration(
               color: Colors.grey,
               image: DecorationImage(
-                image: AssetImage(widget.imagePreference),
+                image: NetworkImage(widget.imagePreference),
                 fit: BoxFit.fill,
               ),
             ),

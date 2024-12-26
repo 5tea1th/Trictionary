@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ItineraryPage extends StatelessWidget {
   static String id = "itinerary_page";
@@ -26,17 +27,17 @@ class ItineraryPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: _buildPopularCard(
-                      'Paris, France',
-                      '4.5',
-                      'assets/images/paris.jpg',
+                      'Jaipur, Rajasthan',
+                      '4.6',
+                      'https://plus.unsplash.com/premium_photo-1661963054563-ce928e477ff3?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFpcHVyfGVufDB8fDB8fHww',
                     ),
                   ),
                   SizedBox(width: 8),
                   Expanded(
                     child: _buildPopularCard(
-                      'Rome, Italy',
-                      '4.8',
-                      'assets/images/rome.jpg',
+                      'Goa',
+                      '4.7',
+                      'https://plus.unsplash.com/premium_photo-1697730411634-5313371ad8fe?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Z29hfGVufDB8fDB8fHww',
                     ),
                   ),
                 ],
@@ -50,15 +51,15 @@ class ItineraryPage extends StatelessWidget {
               Column(
                 children: [
                   _buildRecommendedCard(
-                    'Explore Spain',
-                    '4N/5D',
-                    'assets/images/spain.jpg',
+                    'Kerala Backwaters',
+                    '3N/4D',
+                    'https://plus.unsplash.com/premium_photo-1697729438401-fcb4ff66d9a8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a2VyYWxhfGVufDB8fDB8fHww',
                   ),
                   SizedBox(height: 16),
                   _buildRecommendedCard(
-                    'Norway Secrets',
-                    '4N/5D',
-                    'assets/images/norway.jpg',
+                    'Himalayan Trek',
+                    '5N/6D',
+                    'https://plus.unsplash.com/premium_photo-1692386759833-3acf660742ad?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGltYWxheWFzfGVufDB8fDB8fHww',
                   ),
                 ],
               ),
@@ -69,7 +70,7 @@ class ItineraryPage extends StatelessWidget {
     );
   }
 
-  Widget _buildPopularCard(String title, String rating, String imagePath) {
+  Widget _buildPopularCard(String title, String rating, String imageUrl) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Column(
@@ -77,11 +78,13 @@ class ItineraryPage extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-            child: Image.asset(
-              imagePath,
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
               fit: BoxFit.cover,
               height: 150,
               width: double.infinity,
+              placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
           Padding(
@@ -109,8 +112,7 @@ class ItineraryPage extends StatelessWidget {
     );
   }
 
-  Widget _buildRecommendedCard(String title, String duration,
-      String imagePath) {
+  Widget _buildRecommendedCard(String title, String duration, String imageUrl) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Column(
@@ -118,11 +120,13 @@ class ItineraryPage extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-            child: Image.asset(
-              imagePath,
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
               fit: BoxFit.cover,
               height: 150,
               width: double.infinity,
+              placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
           Padding(
